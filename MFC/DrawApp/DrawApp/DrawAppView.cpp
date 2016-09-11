@@ -8,6 +8,9 @@
 #ifndef SHARED_HANDLERS
 #include "DrawApp.h"
 #include "DrawLine.h"
+#include "Rectangle.h"
+#include "Circle.h"
+#include "Curve.h"
 #endif
 
 #include "DrawAppDoc.h"
@@ -111,8 +114,6 @@ void CDrawAppView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CDrawAppView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
-
 	CClientDC aDC(this);
 	//проверяем нажата ли кнопка мышки и курсор пренадлежит нашему виду
 	if ((nFlags&MK_LBUTTON) && (this == GetCapture()))
@@ -121,6 +122,14 @@ void CDrawAppView::OnMouseMove(UINT nFlags, CPoint point)
 		//если нарисован элемент, то его нужно удалить
 		if (m_pTempElement)
 		{
+			if (CURVE == GetDocument()->GetElementType())
+			{
+				//добавляем точку к временному элементу
+				static_cast<Curve*>(m_pTempElement)->AddSegment(m_EndPoint);
+				m_pTempElement->Draw(&aDC);//перерисовываем элемент
+				return;
+			}
+
 			aDC.SetROP2(R2_NOTXORPEN);//устанавливаем режим
 			m_pTempElement->Draw(&aDC);//удаляем элемент
 			delete m_pTempElement;//удаляем память
@@ -130,8 +139,6 @@ void CDrawAppView::OnMouseMove(UINT nFlags, CPoint point)
 		m_pTempElement = CreateElement();
 		m_pTempElement->Draw(&aDC);
 	}
-
-	//CView::OnMouseMove(nFlags, point);
 }
 
 
@@ -155,6 +162,12 @@ DrawElement* CDrawAppView::CreateElement(void)
 	{
 	case LINE:
 		return new DrawLine(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
+	case RECTANGLE:
+		return new CRectangle(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
+	case CIRCLE:
+		return new Circle(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
+	case CURVE:
+		return new Curve(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
 	default:
 		AfxMessageBox(_T("не известный обьект, не удалось создать [CreateElement]"), MB_OK);
 		AfxAbort();//завершение программы

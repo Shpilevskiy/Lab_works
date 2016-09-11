@@ -17,6 +17,7 @@ DrawElement::~DrawElement()
 }
 
 
+
 // функции-члены DrawElement
 
 CRect DrawElement::GetBoundRect()

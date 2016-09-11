@@ -1,12 +1,14 @@
 #pragma once
-
+#include <cmath>
+#include <vector>
+using std::vector;
 // конечный объект команды DrawElement
 
 class DrawElement : public CObject
 {
 	protected:
 		int m_PenWidth;//ширина пера
-		COLORREF m_Сolor;//цвет фигуры
+		COLORREF m_Color;//цвет фигуры
 		CRect m_EnclosingRect;//описывающий четырехугольник
 
 	public:
