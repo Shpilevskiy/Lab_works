@@ -206,5 +206,6 @@
     <None Include="res\DrawApp.rc2">
       <Filter>Файлы ресурсов</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -155,7 +155,7 @@ void CDrawAppView::OnLButtonUp(UINT nFlags, CPoint point)
 			CDrawAppDoc* pDoc = GetDocument();
 			//добавляем точку к временному элементу
 			m_pTempElement->DrawAndFill(&aDC);//перерисовываем элемент
-			pDoc->AddRectangle(m_StartPoint, m_EndPoint);
+			pDoc->AddRectangle(m_StartPoint, m_EndPoint, pDoc->GetElementColor(), pDoc->GetElementFillColor());
 		}
 
 		ReleaseCapture();//освободить мышь
@@ -183,4 +183,5 @@ DrawElement* CDrawAppView::CreateElement(void)
 		AfxMessageBox(_T("не известный обьект, не удалось создать [CreateElement]"), MB_OK);
 		AfxAbort();//завершение программы
 	}
+	return NULL;
 }

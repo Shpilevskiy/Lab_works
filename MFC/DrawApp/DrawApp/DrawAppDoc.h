@@ -48,7 +48,7 @@ protected:
 #endif // SHARED_HANDLERS
 public:
 	afx_msg
-		void AddRectangle(CPoint & m_StartPoint, CPoint & m_EndPoint);
+		void AddRectangle(CPoint & m_StartPoint, CPoint & m_EndPoint, COLORREF elem_color, COLORREF fill_color);
 	int GetNumLines();
 	CRectangle * GetRectangle(int Index);
 	void OnEelementLine();

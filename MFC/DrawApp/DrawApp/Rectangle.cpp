@@ -12,7 +12,7 @@ CRectangle::CRectangle(const CPoint& start, const CPoint& end, COLORREF aColor, 
 	m_EnclosingRect.NormalizeRect();//нормализация
 }
 
-
+//IMPLEMENT_SERIAL(CRectangle, DrawElement, 1)
 void CRectangle::Draw(CDC* pDC)
 {
 	CPen aPen;//перо
@@ -36,7 +36,7 @@ void CRectangle::Draw(CDC* pDC)
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
 }
 
-IMPLEMENT_SERIAL(CRectangle, CObject, 1)
+IMPLEMENT_SERIAL(CRectangle, DrawElement, 1)
 void CRectangle::DrawAndFill(CDC* pDC)
 {
 	CPen aPen;//перо
@@ -62,10 +62,11 @@ void CRectangle::DrawAndFill(CDC* pDC)
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
 }
 
+
 void CRectangle::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
-		ar << m_StartPoint << m_EndPoint;
+		ar << m_StartPoint << m_EndPoint << m_Color << fill_Color << m_EnclosingRect;
 	else
-		ar >> m_StartPoint >> m_EndPoint;
+		ar >> m_StartPoint >> m_EndPoint >> m_Color >> fill_Color >> m_EnclosingRect;
 }

@@ -163,9 +163,9 @@ void CDrawAppDoc::Dump(CDumpContext& dc) const
 
 
 // команды CDrawAppDoc
-void CDrawAppDoc::AddRectangle(CPoint& m_StartPoint,CPoint& m_EndPoint)
+void CDrawAppDoc::AddRectangle(CPoint& m_StartPoint,CPoint& m_EndPoint, COLORREF elem_color, COLORREF fill_color)
 {
-	CRectangle *rectangle = new CRectangle(m_StartPoint, m_EndPoint, GetElementColor(), GetElementFillColor());
+	CRectangle *rectangle = new CRectangle(m_StartPoint, m_EndPoint, elem_color, fill_color);
 	m_RectangleArray.Add(rectangle);
 	SetModifiedFlag();
 }

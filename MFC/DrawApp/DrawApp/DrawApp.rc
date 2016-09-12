@@ -445,7 +445,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "DrawApp\n\nDrawApp\n\n\nDrawApp.Document\nDrawApp.Document"
+    IDR_MAINFRAME           "DrawApp\n\nDrawApp\nDrawAppFiles(*.drw)\n.drw\nDrawApp.Document\nDrawApp.Document"
 END
 
 STRINGTABLE
