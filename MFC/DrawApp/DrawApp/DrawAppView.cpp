@@ -129,7 +129,7 @@ void CDrawAppView::OnMouseMove(UINT nFlags, CPoint point)
 				m_pTempElement->Draw(&aDC);//перерисовываем элемент
 				return;
 			}
-
+			
 			aDC.SetROP2(R2_NOTXORPEN);//устанавливаем режим
 			m_pTempElement->Draw(&aDC);//удаляем элемент
 			delete m_pTempElement;//удаляем память
@@ -144,9 +144,17 @@ void CDrawAppView::OnMouseMove(UINT nFlags, CPoint point)
 
 void CDrawAppView::OnLButtonUp(UINT nFlags, CPoint point)
 {
+	CClientDC aDC(this);
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (m_pTempElement)
 	{
+		if (RECTANGLE == GetDocument()->GetElementType())
+		{
+			//добавляем точку к временному элементу
+			m_pTempElement->DrawAndFill(&aDC);//перерисовываем элемент
+			//return;
+		}
+
 		ReleaseCapture();//освободить мышь
 		delete m_pTempElement;//освобождаем память
 		m_pTempElement = nullptr;//обнуляем указатель
@@ -163,7 +171,7 @@ DrawElement* CDrawAppView::CreateElement(void)
 	case LINE:
 		return new DrawLine(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
 	case RECTANGLE:
-		return new CRectangle(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
+		return new CRectangle(m_StartPoint, m_EndPoint, pDoc->GetElementColor(), pDoc->GetElementFillColor());
 	case CIRCLE:
 		return new Circle(m_StartPoint, m_EndPoint, pDoc->GetElementColor());
 	case CURVE:

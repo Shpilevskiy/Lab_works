@@ -38,6 +38,14 @@ BEGIN_MESSAGE_MAP(CDrawAppDoc, CDocument)
 	ON_UPDATE_COMMAND_UI(ID_COLOR_RED, &CDrawAppDoc::OnUpdateColorRed)
 	ON_UPDATE_COMMAND_UI(ID_COLOR_GREEN, &CDrawAppDoc::OnUpdateColorGreen)
 	ON_UPDATE_COMMAND_UI(ID_COLOR_BLUE, &CDrawAppDoc::OnUpdateColorBlue)
+	ON_COMMAND(ID_32789, &CDrawAppDoc::On32789)
+	ON_COMMAND(ID_32790, &CDrawAppDoc::OnFillColorRed)
+	ON_COMMAND(ID_32791, &CDrawAppDoc::OnFillColorGreen)
+	ON_COMMAND(ID_32792, &CDrawAppDoc::OnFillColorBlack)
+	ON_UPDATE_COMMAND_UI(ID_32789, &CDrawAppDoc::OnUpdateFillBlue)
+	ON_UPDATE_COMMAND_UI(ID_32790, &CDrawAppDoc::OnUpdateFillRed)
+	ON_UPDATE_COMMAND_UI(ID_32791, &CDrawAppDoc::OnUpdateFillGreen)
+	ON_UPDATE_COMMAND_UI(ID_32792, &CDrawAppDoc::OnUpdateFillBlack)
 END_MESSAGE_MAP()
 
 
@@ -273,4 +281,64 @@ ElementType CDrawAppDoc::GetElementType(void)
 COLORREF CDrawAppDoc::GetElementColor(void)
 {
 	return color;
+}
+
+COLORREF CDrawAppDoc::GetElementFillColor(void)
+{
+	return fillColor;
+}
+
+void CDrawAppDoc::On32789()
+{
+	fillColor = BLUE;
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CDrawAppDoc::OnFillColorRed()
+{
+	fillColor = RED;
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CDrawAppDoc::OnFillColorGreen()
+{
+	fillColor = GREEN;
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CDrawAppDoc::OnFillColorBlack()
+{
+	fillColor = BLACK;
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CDrawAppDoc::OnUpdateFillBlue(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(fillColor == BLUE);
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CDrawAppDoc::OnUpdateFillRed(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(fillColor == RED);
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CDrawAppDoc::OnUpdateFillGreen(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(fillColor == GREEN);
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CDrawAppDoc::OnUpdateFillBlack(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(fillColor == BLACK);
+	// TODO: добавьте свой код обработчика ИП обновления команд
 }

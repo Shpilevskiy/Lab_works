@@ -200,6 +200,7 @@ END
 
 IDR_MAINFRAME MENU
 BEGIN
+    MENUITEM SEPARATOR
     POPUP "&Файл"
     BEGIN
         MENUITEM "Созд&ать\tCtrl+N",            ID_FILE_NEW
@@ -207,7 +208,7 @@ BEGIN
         MENUITEM "Со&хранить\tCtrl+S",          ID_FILE_SAVE
         MENUITEM "Сохранить &как...",           ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
-        MENUITEM "Последний файл",              ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM "Последний файл",              ID_FILE_MRU_FILE1
         MENUITEM SEPARATOR
         MENUITEM "В&ыход",                      ID_APP_EXIT
     END
@@ -247,19 +248,26 @@ BEGIN
     BEGIN
         MENUITEM "&О проекте DrawApp...",       ID_APP_ABOUT
     END
-    POPUP "E&element"
+    POPUP "И&нструмент"
     BEGIN
         MENUITEM "&Line",                       ID_EELEMENT_LINE
         MENUITEM "&Rectangle",                  ID_EELEMENT_RECTANGLE32779
         MENUITEM " &Circle",                    ID_EELEMENT_CIRCLE
         MENUITEM "C&urve",                      ID_EELEMENT_CURVE
     END
-    POPUP "C&olor"
+    POPUP "Ц&вет"
     BEGIN
         MENUITEM "&Black",                      ID_COLOR_BLACK
         MENUITEM "&Red",                        ID_COLOR_RED
         MENUITEM "&Green",                      ID_COLOR_GREEN
         MENUITEM "B&lue",                       ID_COLOR_BLUE
+    END
+    POPUP "&Цвет заливки"
+    BEGIN
+        MENUITEM "&синий",                      ID_32789
+        MENUITEM "&красный",                    ID_32790
+        MENUITEM "&зеленый",                    ID_32791
+        MENUITEM "&черный",                     ID_32792
     END
 END
 

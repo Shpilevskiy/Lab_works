@@ -9,11 +9,13 @@ class DrawElement : public CObject
 	protected:
 		int m_PenWidth;//ширина пера
 		COLORREF m_Color;//цвет фигуры
+		COLORREF fill_Color;//цвет заливки
 		CRect m_EnclosingRect;//описывающий четырехугольник
 
 	public:
 		virtual ~DrawElement();
 		virtual void Draw(CDC* pDC) {};//рисует фигуру
+		virtual void DrawAndFill(CDC* pDC) {};//рисует фигуру
 		virtual CRect GetBoundRect();//возвращает описывающий четырехугольник
 	protected:
 		DrawElement();//предотвращение вызова в предках

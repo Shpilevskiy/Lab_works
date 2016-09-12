@@ -71,4 +71,15 @@ public:
 	afx_msg void OnUpdateColorBlue(CCmdUI *pCmdUI);
 	ElementType GetElementType(void);
 	COLORREF GetElementColor(void);
+	COLORREF GetElementFillColor(void);
+	afx_msg void On32789();
+	afx_msg void OnFillColorRed();
+	afx_msg void OnFillColorGreen();
+	afx_msg void OnFillColorBlack();
+	// цвет заливки
+	COLORREF fillColor;
+	afx_msg void OnUpdateFillBlue(CCmdUI *pCmdUI);
+	afx_msg void OnUpdateFillRed(CCmdUI *pCmdUI);
+	afx_msg void OnUpdateFillGreen(CCmdUI *pCmdUI);
+	afx_msg void OnUpdateFillBlack(CCmdUI *pCmdUI);
 };
