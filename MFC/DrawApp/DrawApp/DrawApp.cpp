@@ -109,6 +109,8 @@ BOOL CDrawAppApp::InitInstance()
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
 
+	EnableShellOpen();
+	RegisterShellFileTypes();
 
 	// Разрешить использование расширенных символов в горячих клавишах меню
 	CMFCToolBar::m_bExtCharTranslation = TRUE;
@@ -127,6 +129,7 @@ BOOL CDrawAppApp::InitInstance()
 	// Одно и только одно окно было инициализировано, поэтому отобразите и обновите его
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
+	m_pMainWnd->DragAcceptFiles();
 	return TRUE;
 }
 

@@ -46,6 +46,8 @@ BEGIN_MESSAGE_MAP(CDrawAppDoc, CDocument)
 	ON_UPDATE_COMMAND_UI(ID_32790, &CDrawAppDoc::OnUpdateFillRed)
 	ON_UPDATE_COMMAND_UI(ID_32791, &CDrawAppDoc::OnUpdateFillGreen)
 	ON_UPDATE_COMMAND_UI(ID_32792, &CDrawAppDoc::OnUpdateFillBlack)
+	ON_COMMAND(ID_EDIT_UNDO, &CDrawAppDoc::OnEditUndo)
+	ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &CDrawAppDoc::OnUpdateEditUndo)
 END_MESSAGE_MAP()
 
 
@@ -81,10 +83,12 @@ void CDrawAppDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
+		m_RectangleArray.Serialize(ar);
 		// TODO: добавьте код сохранения
 	}
 	else
 	{
+		m_RectangleArray.Serialize(ar);
 		// TODO: добавьте код загрузки
 	}
 }
@@ -159,7 +163,26 @@ void CDrawAppDoc::Dump(CDumpContext& dc) const
 
 
 // команды CDrawAppDoc
+void CDrawAppDoc::AddRectangle(CPoint& m_StartPoint,CPoint& m_EndPoint)
+{
+	CRectangle *rectangle = new CRectangle(m_StartPoint, m_EndPoint, GetElementColor(), GetElementFillColor());
+	m_RectangleArray.Add(rectangle);
+	SetModifiedFlag();
+}
 
+int CDrawAppDoc::GetNumLines()
+{
+	return (int)m_RectangleArray.GetSize();
+}
+
+CRectangle* CDrawAppDoc::GetRectangle(int Index)
+{
+	if (Index<0 || Index>m_RectangleArray.GetUpperBound())
+	{
+		return 0;
+	}
+	return m_RectangleArray.GetAt(Index);
+}
 
 void CDrawAppDoc::OnEelementLine()
 {
@@ -340,5 +363,34 @@ void CDrawAppDoc::OnUpdateFillGreen(CCmdUI *pCmdUI)
 void CDrawAppDoc::OnUpdateFillBlack(CCmdUI *pCmdUI)
 {
 	pCmdUI->SetCheck(fillColor == BLACK);
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CDrawAppDoc::DeleteContents()
+{
+	// TODO: добавьте специализированный код или вызов базового класса
+
+	CDocument::DeleteContents();
+}
+
+
+void CDrawAppDoc::OnEditUndo()
+{
+	// TODO: добавьте свой код обработчика команд
+	int Index = (int)m_RectangleArray.GetUpperBound();
+	if (Index>-1)
+	{
+		delete m_RectangleArray.GetAt(Index);
+		m_RectangleArray.RemoveAt(Index);
+	}
+	UpdateAllViews(0);
+	SetModifiedFlag();
+}
+
+
+void CDrawAppDoc::OnUpdateEditUndo(CCmdUI *pCmdUI)
+{
+	pCmdUI->Enable((int)m_RectangleArray.GetSize());
 	// TODO: добавьте свой код обработчика ИП обновления команд
 }

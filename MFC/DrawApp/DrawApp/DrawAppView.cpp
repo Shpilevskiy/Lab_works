@@ -55,13 +55,15 @@ BOOL CDrawAppView::PreCreateWindow(CREATESTRUCT& cs)
 
 // рисование CDrawAppView
 
-void CDrawAppView::OnDraw(CDC* /*pDC*/)
+void CDrawAppView::OnDraw(CDC* pDC)
 {
 	CDrawAppDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-
+	int Index = pDoc->GetNumLines();
+	while (Index--)
+		pDoc->GetRectangle(Index)->DrawAndFill(pDC);
 	// TODO: добавьте здесь код отрисовки для собственных данных
 }
 
@@ -108,7 +110,7 @@ void CDrawAppView::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	SetCapture();//перехватыватьв се последующие сообщения
 	m_StartPoint = point;//точка нажатия мышки
-	//CView::OnLButtonDown(nFlags, point);
+	CView::OnLButtonDown(nFlags, point);
 }
 
 
@@ -150,9 +152,10 @@ void CDrawAppView::OnLButtonUp(UINT nFlags, CPoint point)
 	{
 		if (RECTANGLE == GetDocument()->GetElementType())
 		{
+			CDrawAppDoc* pDoc = GetDocument();
 			//добавляем точку к временному элементу
 			m_pTempElement->DrawAndFill(&aDC);//перерисовываем элемент
-			//return;
+			pDoc->AddRectangle(m_StartPoint, m_EndPoint);
 		}
 
 		ReleaseCapture();//освободить мышь

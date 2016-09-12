@@ -36,6 +36,7 @@ void CRectangle::Draw(CDC* pDC)
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
 }
 
+IMPLEMENT_SERIAL(CRectangle, CObject, 1)
 void CRectangle::DrawAndFill(CDC* pDC)
 {
 	CPen aPen;//перо
@@ -59,4 +60,12 @@ void CRectangle::DrawAndFill(CDC* pDC)
 
 	pDC->SelectObject(pOldPen);//восстановить старое перо
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
+}
+
+void CRectangle::Serialize(CArchive& ar)
+{
+	if (ar.IsStoring())
+		ar << m_StartPoint << m_EndPoint;
+	else
+		ar >> m_StartPoint >> m_EndPoint;
 }

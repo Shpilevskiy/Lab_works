@@ -5,14 +5,14 @@
 
 #pragma once
 #include "ConstantsMenu.h"
-
-
+#include "Rectangle.h"
+#include "Afxtempl.h"
 class CDrawAppDoc : public CDocument
 {
 protected: // создать только из сериализации
 	CDrawAppDoc();
 	DECLARE_DYNCREATE(CDrawAppDoc)
-
+	CTypedPtrArray<CObArray, CRectangle*> m_RectangleArray;
 // Атрибуты
 public:
 
@@ -47,7 +47,11 @@ protected:
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
 public:
-	afx_msg void OnEelementLine();
+	afx_msg
+		void AddRectangle(CPoint & m_StartPoint, CPoint & m_EndPoint);
+	int GetNumLines();
+	CRectangle * GetRectangle(int Index);
+	void OnEelementLine();
 	afx_msg void OnEelementCircle();
 	afx_msg void OnEelementCurve();
 	afx_msg void OnEelementRectangle32779();
@@ -82,4 +86,7 @@ public:
 	afx_msg void OnUpdateFillRed(CCmdUI *pCmdUI);
 	afx_msg void OnUpdateFillGreen(CCmdUI *pCmdUI);
 	afx_msg void OnUpdateFillBlack(CCmdUI *pCmdUI);
+	virtual void DeleteContents();
+	afx_msg void OnEditUndo();
+	afx_msg void OnUpdateEditUndo(CCmdUI *pCmdUI);
 };
