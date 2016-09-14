@@ -15,6 +15,21 @@ namespace TableApp
         public Form1()
         {
             InitializeComponent();
+            dataGridView1.Rows.Add("Привет");
+            dataGridView1.Rows.Add("О дивный");
+            dataGridView1.Rows.Add("новый");
+            dataGridView1.Rows.Add("мир");
+            dataGridView1.Rows.Add("Ты");
+            dataGridView1.Rows.Add("Прекрасен");
+            dataGridView1.Rows.Add("как");
+            dataGridView1.Rows.Add("1984");
+            dataGridView1.Rows.Add("Оттенка");
+            dataGridView1.Rows.Add("Пары");
+            dataGridView1.Rows.Add("Сотен");
+            dataGridView1.Rows.Add("Градусов");
+            dataGridView1.Rows.Add("По");
+            dataGridView1.Rows.Add("Фаренгейту");
+            dataGridView1.Rows.Add("Пока");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
