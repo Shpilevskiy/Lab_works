@@ -31,7 +31,6 @@ void CRectangle::Draw(CDC* pDC)
 	//рисуем
 	pDC->Rectangle(m_EnclosingRect);//рисуем черырехугольник
 									//восстанавливаем
-
 	pDC->SelectObject(pOldPen);//восстановить старое перо
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
 }
@@ -50,13 +49,12 @@ void CRectangle::DrawAndFill(CDC* pDC)
 
 	//сохраняем старое перо и кисть
 	CPen* pOldPen = pDC->SelectObject(&aPen);
-	CBrush* pOldBrush = (CBrush*)pDC->SelectStockObject(NULL_BRUSH);
 
 	//рисуем
+	CBrush aBrush(fill_Color);
+	CBrush* pOldBrush = pDC->SelectObject(&aBrush);
 	pDC->Rectangle(m_EnclosingRect);//рисуем черырехугольник
 									//восстанавливаем
-	pDC->FillSolidRect(m_EnclosingRect, fill_Color);
-	//pDC->FillSolidRect(m_EnclosingRect, RGB(0,0,0));
 
 	pDC->SelectObject(pOldPen);//восстановить старое перо
 	pDC->SelectObject(pOldBrush);//восстановить старую кисть
