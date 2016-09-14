@@ -22,10 +22,15 @@ namespace TableApp
             var tmp = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
             try
             {
-                if (!String.IsNullOrWhiteSpace(tmp.ToString()))
+                if (!string.IsNullOrWhiteSpace(tmp.ToString()))
                 {
-                    MessageBox.Show("Переносим колонку: '" + tmp.ToString() + "' Из первой таблицы во вторую");
+                    MessageBox.Show("Переносим ячейку: '" + tmp.ToString() + "' Из первой таблицы во вторую");
                     dataGridView2.Rows.Add(tmp);
+
+                    DataGridViewCell selectedCell = dataGridView1.Rows[e.RowIndex].Cells[0];
+                    selectedCell.Style.BackColor = Color.Aqua;
+
+                    DataGridViewCell pressedButton = dataGridView1.Rows[e.RowIndex].Cells[1];
                 }
             }
             catch(System.NullReferenceException)
@@ -39,15 +44,71 @@ namespace TableApp
             var tmp = dataGridView2.Rows[e.RowIndex].Cells[0].Value;
             try
             {
-                if (!String.IsNullOrWhiteSpace(tmp.ToString()))
+                if (!string.IsNullOrWhiteSpace(tmp.ToString()))
                 {
-                    MessageBox.Show("Переносим колонку: '" + tmp.ToString() + "' Из второй таблицы в первую");
+                    MessageBox.Show("Переносим ячейку: '" + tmp.ToString() + "' Из второй таблицы в первую");
                     dataGridView1.Rows.Add(tmp);
+
+                    DataGridViewCell selectedCell = dataGridView2.Rows[e.RowIndex].Cells[0];
+                    selectedCell.Style.BackColor = Color.Aqua;
                 }
             }
             catch (System.NullReferenceException)
             {
                 return;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedCellCollection selectedColumnCount = dataGridView1.SelectedCells;
+            foreach(DataGridViewCell cell in selectedColumnCount)
+            {
+                if (cell.ColumnIndex == 0)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                        {
+                            MessageBox.Show("Переносим ячейку: '" + cell.Value.ToString() + "' Из второй таблицы в первую");
+                            dataGridView2.Rows.Add(dataGridView1.Rows[cell.RowIndex].Cells[0].Value);
+
+                            DataGridViewCell selectedCell = dataGridView1.Rows[cell.RowIndex].Cells[0];
+                            selectedCell.Style.BackColor = Color.Aqua;
+                        }
+                    }
+                    catch (System.NullReferenceException)
+                    {
+                        return;
+                    }
+                }
+            }
+     
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedCellCollection selectedColumnCount = dataGridView2.SelectedCells;
+            foreach (DataGridViewCell cell in selectedColumnCount)
+            {
+                if (cell.ColumnIndex == 0)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                        {
+                            MessageBox.Show("Переносим ячейку: '" + cell.Value.ToString() + "' Из второй таблицы в первую");
+                            dataGridView1.Rows.Add(dataGridView2.Rows[cell.RowIndex].Cells[0].Value);
+
+                            DataGridViewCell selectedCell = dataGridView2.Rows[cell.RowIndex].Cells[0];
+                            selectedCell.Style.BackColor = Color.Aqua;
+                        }
+                    }
+                    catch (System.NullReferenceException)
+                    {
+                        return;
+                    }
+                }
             }
         }
     }
