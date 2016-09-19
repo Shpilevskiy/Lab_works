@@ -1,0 +1,33 @@
+.van {
+    top: 45%;
+    left: 44%;
+}
+
+#axis:hover .move-right{
+    transform: translate(1720px,0) rotate(-360deg);
+    -webkit-transform: translate(1720px,0) rotate(-360deg); /** Chrome & Safari **/
+    -o-transform: translate(1720px,0) rotate(-360deg); /** Opera **/
+    -moz-transform: translate(1720px,0) rotate(-360deg); /** Firefox **/
+
+    opacity: 0.5;
+    border: 2px solid #ff0000;
+}
+
+.object {
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+
+
+    -moz-transition: all 2s ease-in-out; /** Firefox **/
+    -o-transition: all 2s ease-in-out; /** Opera **/
+}
+
+.image-style {
+    width: 200px;
+    height: 150px;
+}
+
+.move-place {
+    bottom: 10px;
+    position: absolute;
+}
