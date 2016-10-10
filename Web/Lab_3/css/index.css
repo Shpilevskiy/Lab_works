@@ -1,0 +1,121 @@
+body {
+    background: black;
+}
+
+.back {
+    border: 9px solid black;
+    position: absolute;
+    background: #fff2fe; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f9fbff, #dddddd); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f9fbff, #dddddd); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f9fbff, #dddddd); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f9fbff, #dddddd); /* Standard syntax */
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 98%;
+
+    border-radius: 0 0 20px 20px;
+}
+
+.logo {
+    width: 200px;
+    border-bottom: 120px solid #000000;
+    border-left: 60px solid transparent;
+    border-right: 0;
+    transform: rotate(180deg);
+}
+
+.logo-text {
+    position: fixed;
+    color: gold;
+    transform: rotate(180deg);
+    padding-right: 50px;
+    padding-bottom: 25px;
+}
+
+p {
+    margin-top: auto !important;
+    font-family: Arial, Helvetica, sans-serif; /* Гарнитура шрифта основного текста */
+    font-size: 90%; /* Размер шрифта */
+}
+P:first-letter {
+    font-family: "Times New Roman", Times, serif; /* Гарнитура шрифта первой буквы */
+    font-size: 200%; /* Размер шрифта первого символа */
+    color: gold; /* Красный цвет текста */
+}
+
+.text-block {
+    /*width: 75%;*/
+    padding-right: 150px;
+    padding-left: 150px;
+}
+
+.text-block-pic {
+    width: 80px;
+    height: 80px;
+}
+
+.center {
+    text-align: center;
+}
+
+.figures{
+    margin-top: 200px;
+    margin-left: 221px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.figures-text{
+    z-index: 3;
+    font-size: 58px;
+    color: gold;
+    position: absolute;
+    margin-top: -52px;
+    margin-left: -127px;
+}
+
+.rhombus {
+    width: 250px;
+    height: 250px;
+    background: gray;
+    /* Rotate */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    /* Rotate Origin */
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+
+    border: 1px solid black;
+}
+
+.rhombus-text {
+    margin-left: 226px;
+    text-align: center;
+    transform: rotate(90deg);
+    font-size: 25px;
+    color: gold;
+}
+
+#first-rhombus {
+    display: inline-block;
+    z-index: 0;
+}
+
+#second-rhombus {
+    display: inline-block;
+    z-index: 1;
+}
+
+#third-rhombus {
+    display: inline-block;
+    z-index: 2;
+}

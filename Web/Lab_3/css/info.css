@@ -1,0 +1,97 @@
+/*.back {*/
+    /*position: absolute;*/
+    /*background: #fff2fe; !* For browsers that do not support gradients *!*/
+    /*background: -webkit-linear-gradient(#c6c5bc, #dddddd); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(#c6c5bc, #dddddd); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(#c6c5bc, #dddddd); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(#c6c5bc, #dddddd); !* Standard syntax *!*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
+
+
+.logo-text {
+    position: fixed;
+    color: gold;
+    font-size: 100px;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+.frame-block {
+    position: absolute;
+    bottom: 1px;
+    background: #dddddd; /* For browsers that do not support gradients */
+    /*background: -webkit-linear-gradient(#f9fbff, #dddddd); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(#f9fbff, #dddddd); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(#f9fbff, #dddddd); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(#f9fbff, #dddddd); !* Standard syntax *!*/
+    border-radius: 0 50px 50px 50px;
+    left: 0;
+    width: 100%;
+    height: 82%;
+    z-index: 0;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.footer-pic {
+    position: absolute;
+    z-index: 1;
+    width: 1390px;
+    height: 190px;
+    margin-left: 500px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.title-block {
+    margin-top: 10px;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    background: #dddddd; /* For browsers that do not support gradients */
+    /*background: -webkit-linear-gradient(#f9fbff, #dddddd); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(#f9fbff, #dddddd); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(#f9fbff, #dddddd); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(#f9fbff, #dddddd); !* Standard syntax *!*/
+    border-radius: 50px 50px 0 0;
+    width: 425px;
+    height: 195px;
+    /*box-shadow: 0 0 25px rgba(0,0,0,0.5);*/
+}
+
+.table-center {
+    width: 1200px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+p {
+    margin-top: auto !important;
+    font-family: Arial, Helvetica, sans-serif; /* Гарнитура шрифта основного текста */
+    font-size: 90%; /* Размер шрифта */
+}
+P:first-letter {
+    font-family: "Times New Roman", Times, serif; /* Гарнитура шрифта первой буквы */
+    font-size: 200%; /* Размер шрифта первого символа */
+    color: gold; /* Красный цвет текста */
+}
+
+
+table {
+    width: 100%; /* Ширина таблицы */
+}
+td, th {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid #000; /* Параметры рамки */
+}
+th {
+    background: #afd792; /* Цвет фона */
+    color: #333;  /* Цвет текста */
+}
+tbody tr:hover {
+    /*background: #f3bd48; !* Цвет фона при наведении *!*/
+    color: red; /* Цвет текста при наведении */
+}
