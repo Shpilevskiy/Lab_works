@@ -2,6 +2,7 @@ var submitButton = $("#submit-button");
 var checkboxGroup = $("#checkbox-group");
 var textGroup = $("#text-group");
 var emailGroup = $("#email-group");
+var nextPage = $("#next-page");
 
 var showError = function (group) {
     group.addClass("has-error")
@@ -52,6 +53,17 @@ var validateFields = function(criterions, response, email) {
     return isAllCorrect
 };
 
+var addDataToLocalStorage = function (age, criterions, quality, response, email) {
+    localStorage.setItem(String(localStorage.length), JSON.stringify({
+        "id": String(localStorage.length + 1),
+        "age": age,
+        "criterions": criterions,
+        "quality": quality,
+        "response": response,
+        "email": email
+    }))
+};
+
 submitButton.click(function () {
     var age = getAgeInfo();
     var criterions = getCriterionInfo();
@@ -59,10 +71,14 @@ submitButton.click(function () {
     var response = getResponse();
     var email = getEmailAddress();
 
+    var criterionString = "";
+
     if (!validateFields(criterions, response, email)) return;
     var criterionsList = criterions.map(function (i, item) {
-        if (typeof(item.value) == "string")
-        return item.value;
+        if (typeof(item.value) === "string") {criterionString += item.value + " "}
     });
-    console.log(criterionsList);
+
+    addDataToLocalStorage(age,criterionString,quality,response,email);
+
+    window.open("../Lab_4/results.html")
 });
