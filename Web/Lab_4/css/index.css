@@ -1,0 +1,42 @@
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #333;
+}
+
+
+.info-header {
+    padding-bottom: 20px;
+}
+
+.info-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+.lead {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.info-description {
+    font-size: 20px;
+    color: #999999;
+}
+
+.quiz-post {
+    margin-bottom: 60px;
+}
+
+.quiz-point {
+    font-weight: normal !important;
+}
+
+.quiz-text-response {
+    width: 950px;
+}

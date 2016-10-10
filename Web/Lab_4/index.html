@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab_4</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="info-header">
+        <h1 class="info-title"> Добрый день, спасибо за покупку нашего ноутбука!</h1>
+        <p class="lead info-description"> Пожалуйста, пройдите этот небольшой опрос
+        надеемся, что это не займет у вас много времени</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-11">
+            <div class="quiz-post">
+                <hr>
+
+                <form class="form-horizontal">
+
+                    <label class="control-label">Сколько вам лет?</label>
+
+                    <label class="radio quiz-point">
+                        <input type="radio" name="optionsRadios" id="radio18-" value="18-" checked>
+                        меньше 18
+                    </label>
+
+                    <label class="radio quiz-point">
+                        <input type="radio" name="optionsRadios" id="radio18-24" value="18-24">
+                        18-24
+                    </label>
+
+                    <label class="radio quiz-point">
+                        <input type="radio" name="optionsRadios" id="radio24-30" value="24-30">
+                        24-30
+                    </label>
+
+                    <label class="radio quiz-point">
+                        <input type="radio" name="optionsRadios" id="radio30+" value="30+">
+                        Старше 30
+                    </label>
+
+                    <hr>
+
+                    <div id="checkbox-group" class="control-group">
+                        <div class="controls">
+                            <label class="control-label">Что является для вас найболее важным при выборе ноутбука?</label>
+                            <label class="checkbox inline quiz-point">
+                                <input type="checkbox" id="CheckboxPrice" value="Цена"> Цена
+                            </label>
+                            <label class="checkbox inline quiz-point">
+                                <input type="checkbox" id="CheckboxPerformance" value="Производительность"> Производительность
+                            </label>
+                            <label class="checkbox inline quiz-point">
+                                <input type="checkbox" id="CheckboxScreen" value="Экран"> Экран
+                            </label>
+                            <label class="checkbox inline quiz-point">
+                                <input type="checkbox" id="CheckboxWeight" value="Вес"> Вес
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="quality-label"> Пожалуйста, оцените качество обслуживания </label>
+                            <p>
+                                <label class="control-label quiz-point">
+                                    <select id="quality-label">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div id="text-group" class="control-group">
+                        <label class="control-label">Пожалуйста, оставьте отзыв с пожеланием (150 символов)</label>
+                        <p>
+                            <label class="quiz-point" for="response-text">
+                                <textarea id="response-text" class="quiz-text-response" rows="3"></textarea>
+                            </label>
+                        </p>
+                    </div>
+
+
+                    <hr>
+
+                    <div id="email-group" class="control-group">
+                        <label class="control-label" for="input-mail">Ваш email для обратной связи</label>
+                        <input type="text" class="form-control" id="input-mail" placeholder="example@gmail.com">
+                    </div>
+
+                    <hr>
+
+                    <a href="#" id="submit-button" type="button" class="btn btn-info">Отправить</a>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/index.js"></script>
+
+</body>
+</html>
