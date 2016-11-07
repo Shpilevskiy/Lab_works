@@ -1,0 +1,27 @@
+.top-image {
+    width: 140px;
+    height: 140px;
+}
+
+
+.info-image {
+    margin-top: 35%;
+    width: 500px;
+    height: 500px;
+}
+
+#top-info-block {
+    display: none;
+}
+
+.main-info-block {
+    display: none;
+}
+
+.info {
+    display: none;
+}
+
+.info-main-text {
+    color: black;
+}
