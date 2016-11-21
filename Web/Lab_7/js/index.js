@@ -263,4 +263,5 @@ deleteSelectedRecordButton.on("click", function () {
     selectedIdToDelete = undefined;
     makeDeleteMessageSuccess("Был успешно удален!");
     renderTable();
+    renderDropdownList();
 });
