@@ -6,7 +6,8 @@ var nameInput = $("#name-input");
 var purposeInput = $("#purpose-input");
 var priceInput = $("#price-input");
 var weightInput = $("#weight-input");
-var successInfo = $("#success-new-record");
+var addingSuccessInfoBlock = $("#success-new-record");
+var addingSuccessInoBlockText = $("#new-record-info-text");
 
 var controlBlock = $("#control-buttons-block");
 var minWeightBlock = $("#min-weight-block");
@@ -164,9 +165,13 @@ addNewRecordButton.on("click", function () {
 
     if (isAllCorrect) {
         addNewTool(name, purpose, price, weight);
-        showBlock(successInfo);
+        showBlock(addingSuccessInfoBlock);
+        addingSuccessInoBlockText.text("Добавлен новый инструмент с вашими данными: наименование: '" + name + "' назначение: '" + purpose + "' цена: '" + price + "' вес: '" + weight + "'");
         clearNewRowInputFields();
         renderTable();
+    }
+    else {
+        hideBlock(addingSuccessInfoBlock);
     }
 
 });
@@ -243,7 +248,7 @@ dropdownList.on("click", "a", function (e) {
     var newText = "";
     getToolById(selectedIdToDelete).list(null, function (results) {
         results.forEach(function (tool) {
-            newText = "Наименование: " + tool.name + " Назначение: " + tool.purpose + " Вес: " + tool.weight + " Цена: " + tool.price;
+            newText = "id: '" + tool.id + "' Наименование: '" + tool.name + "' Назначение: '" + tool.purpose + "' Вес: " + tool.weight + "' Цена: " + tool.price + "'";
             makeDeleteMessageSuccess(newText);
         });
     });

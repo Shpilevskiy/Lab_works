@@ -23,8 +23,7 @@
             <div class="col-md-12 new-record-block">
 
                 <div id="success-new-record" class="alert alert-success alert-dismissible hide-block">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Успех!</strong> Добавлен новый инструмент с вашими данными.
+                    <strong>Успех!</strong> <div id="new-record-info-text"></div>
                 </div>
 
                 <form>
@@ -115,11 +114,7 @@
                             <span class="caret"></span>
                         </button>
 
-                        <ul id="dropdown-records-id" class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
+                        <ul id="dropdown-records-id" class="dropdown-menu"></ul>
                     </div>
                 </div>
 
@@ -147,7 +142,7 @@
                 <table id="tools-table" class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Наименование</th>
                         <th>Назначение</th>
                         <th>Цена</th>
