@@ -7,8 +7,8 @@ persistence.store.websql.config(
 var Tool = persistence.define('Tool', {
     name: "TEXT",
     purpose: "TEXT",
-    price: "TEXT",
-    weight: "TEXT"
+    price: "INT",
+    weight: "INT"
 });
 
 persistence.schemaSync();
@@ -34,4 +34,6 @@ var getAllTools = function () {
     return Tool.all();
 };
 
-getAllTools();
+var getToolWithMinimalWeight = function () {
+    return Tool.all().order("weight").limit(1);
+};

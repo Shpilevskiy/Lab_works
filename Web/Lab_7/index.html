@@ -18,8 +18,15 @@
     <hr>
 
     <div class="row">
+
         <div id="add-new-record-block" class="col-md-12 hide-block">
             <div class="col-md-12 new-record-block">
+
+                <div id="success-new-record" class="alert alert-success alert-dismissible hide-block">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Успех!</strong> Добавлен новый инструмент с вашими данными.
+                </div>
+
                 <form>
                     <div class="col-md-6">
                         <div class="control-group input-group-lg">
@@ -45,42 +52,49 @@
                 </form>
             </div>
 
-            <div class="control-button">
-                <a id="add-new-record-button" href="#" type="button" class="btn btn-info">Добавить новую запись в таблицу</a>
+            <div class="new-record-control-wrapper">
+                <a id="add-new-record-button" href="#" type="button" class="btn btn-success new-record-control-button">Добавить новую запись в таблицу</a>
             </div>
 
-            <div class="control-button back-button">
-                <a id="remove-input-button" href="#" type="button" class="btn btn-info">Очистить ввод</a>
+            <div class="new-record-control-wrapper back-button">
+                <a id="remove-input-button" href="#" type="button" class="btn btn-danger new-record-control-button">Очистить ввод</a>
             </div>
 
-            <div class="control-button back-button">
-                <a id="back-from-adding" href="#" type="button" class="btn btn-info">Вернуться назад</a>
+            <div class="new-record-control-wrapper back-button">
+                <a id="back-from-adding" href="#" type="button" class="btn btn-primary new-record-control-button">Вернуться назад</a>
             </div>
         </div>
 
         <div id="control-buttons-block" class="col-md-12">
 
-            <div class="col-md-3">
-                <div class="control-button">
-                    <a id="new-record-button" href="#" type="button" class="btn btn-info">Добавить новый инструмент</a>
+            <div id="min-weight-block" class="alert alert-success hide-block">
+                <strong>Инструмент с минимальным весом:</strong>
+                <div id="min-weight-block-text">
+                Добавлен новый инструмент с вашими данными.
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="control-button">
-                    <a id="show-table-button" href="#" type="button" class="btn btn-info control-button">Показать таблицу</a>
+                <div class="control-button-wrapper">
+                    <a id="new-record-button" href="#" type="button" class="btn btn-success control-button">Добавить новый инструмент</a>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="control-button">
-                    <a id="minimal-weight-button" href="#" type="button" class="btn btn-info control-button">инструмент с минимальным весом</a>
+                <div class="control-button-wrapper">
+                    <a id="show-table-button" href="#" type="button" class="btn btn-primary control-button">Показать таблицу</a>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="control-button">
-                    <a id="delete-record-button" href="#" type="button" class="btn btn-info control-button">Удалить запись</a>
+                <div class="control-button-wrapper">
+                    <a id="minimal-weight-button" href="#" type="button" class="btn btn-primary control-button">инструмент с минимальным весом</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="control-button-wrapper">
+                    <a id="delete-record-button" href="#" type="button" class="btn btn-warning control-button">Удалить запись</a>
                 </div>
             </div>
 
@@ -107,6 +121,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 
 </div>

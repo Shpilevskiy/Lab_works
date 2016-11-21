@@ -6,8 +6,10 @@ var nameInput = $("#name-input");
 var purposeInput = $("#purpose-input");
 var priceInput = $("#price-input");
 var weightInput = $("#weight-input");
+var successInfo = $("#success-new-record");
 
 var controlBlock = $("#control-buttons-block");
+var minWeightBlock = $("#min-weight-block");
 var newRecordButton = $("#new-record-button");
 var deleteRecordButton = $("#delete-record-button");
 var minWeightButton = $("#minimal-weight-button");
@@ -44,10 +46,46 @@ var removeStateClasses = function (field) {
     field.parent().removeClass("has-success");
 };
 
+var destroyTable = function () {
+    $("tbody").empty();
+};
+
 var renderRow = function (item) {
     var template = toolsTableTemplate.html();
     Mustache.parse(template);
     return Mustache.render(template, item);
+};
+
+var renderTable = function () {
+    destroyTable();
+    var tools = getAllTools();
+
+    tools.list(null, function (results) {
+        results.forEach(function (tool) {
+            var newRow = renderRow(tool);
+            toolsTable.append($(newRow));
+        })});
+};
+
+var renderTableWithCustomTools = function (tools) {
+    destroyTable();
+    tools.list(null, function (results) {
+        results.forEach(function (tool) {
+            var newRow = renderRow(tool);
+            toolsTable.append($(newRow));
+        });
+    });
+};
+
+var clearNewRowInputFields = function () {
+    removeStateClasses(nameInput);
+    removeStateClasses(purposeInput);
+    removeStateClasses(priceInput);
+    removeStateClasses(weightInput);
+    nameInput.val("");
+    purposeInput.val("");
+    priceInput.val("");
+    weightInput.val("");
 };
 
 newRecordButton.on("click", function () {
@@ -61,42 +99,48 @@ addNewRecordButton.on("click", function () {
     var price = priceInput.val();
     var weight = weightInput.val();
 
+    var isAllCorrect = true;
+
     if (!name.trim()) {
-        addErrorClass(nameInput)
+        addErrorClass(nameInput);
+        isAllCorrect = false;
     }
     else {
         addSuccessClass(nameInput)
     }
     if (!purpose.trim()) {
         addErrorClass(purposeInput);
+        isAllCorrect = false;
     }
     else {
         addSuccessClass(purposeInput)
     }
     if (!price.trim()) {
         addErrorClass(priceInput);
+        isAllCorrect = false;
     }
     else {
         addSuccessClass(priceInput)
     }
     if (!weight.trim()) {
         addErrorClass(weightInput);
+        isAllCorrect = false;
     }
     else {
         addSuccessClass(weightInput)
     }
 
+    if (isAllCorrect) {
+        addNewTool(name, purpose, price, weight);
+        showBlock(successInfo);
+        clearNewRowInputFields();
+        renderTable();
+    }
+
 });
 
 removeInputButton.on("click", function () {
-    removeStateClasses(nameInput);
-    removeStateClasses(purposeInput);
-    removeStateClasses(priceInput);
-    removeStateClasses(weightInput);
-    nameInput.val("");
-    purposeInput.val("");
-    priceInput.val("");
-    weightInput.val("");
+   clearNewRowInputFields();
 });
 
 backFromAddingButton.on("click", function () {
@@ -106,20 +150,31 @@ backFromAddingButton.on("click", function () {
 
 showTableButton.on("click", function () {
     if(tableBlock.is(':visible')) {
-        hideBlock(tableBlock, $("tr").remove());
+        hideBlock(tableBlock, destroyTable());
         showTableButton.text("Показать таблицу")
     }
    else {
-
-       var tools = getAllTools();
-
-       tools.list(null, function (results) {
-           results.forEach(function (tool) {
-               var newRow = renderRow(tool);
-               toolsTable.append($(newRow));
-           })});
-
-       showBlock(tableBlock);
+        renderTable();
+        showBlock(tableBlock);
         showTableButton.text("Скрыть таблицу")
+    }
+});
+
+minWeightButton.on("click", function () {
+
+    if (minWeightBlock.is(':visible')) {
+        hideBlock(minWeightBlock);
+        minWeightButton.text("Инструмент с минимальным весом")
+    }
+    else {
+        minWeightButton.text("Скрыть минимальный вес");
+        var newText = "";
+        getToolWithMinimalWeight().list(null, function (results) {
+            results.forEach(function (tool) {
+                newText = "Наименование: " + tool.name + " Назначение: " + tool.purpose + " Вес: " + tool.weight + " Цена: " + tool.price;
+                $("#min-weight-block-text").text(newText);
+            });
+        });
+        showBlock(minWeightBlock);
     }
 });

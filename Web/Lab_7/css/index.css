@@ -48,9 +48,24 @@ label {
     padding: 0 40%;
 }
 
-.control-button {
+.control-button-wrapper {
     margin: 0 auto;
     text-align: center
+}
+
+.control-button {
+    width: 275px;
+}
+
+.new-record-control-wrapper {
+    margin: 0 auto;
+    text-align: center
+}
+
+
+
+.new-record-control-button {
+    width: 300px;
 }
 
 .hide-block {
