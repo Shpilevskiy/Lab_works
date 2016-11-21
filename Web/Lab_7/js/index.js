@@ -20,6 +20,15 @@ var toolsTable = $("#tools-table");
 var toolsTableTemplate = $("#tools-table-template");
 var toolsTableBody = $("#tools-table-body");
 
+var deleteRecordBlock = $("#delete-record-block");
+var selectedRecordInfo =$("#selected-block");
+var selectedRecordInfoStrong = $("#selected-block-strong");
+var selectedRecordInfoText= $("#selected-block-text");
+var dropdownList = $("#dropdown-records-id");
+var dropdownLiTemplate = $("#dropdown-li-template");
+var backFromDeletingButton = $("#back-from-deleting");
+var deleteSelectedRecordButton = $("#delete-selected-record");
+var selectedIdToDelete;
 
 var showBlock = function (blockToShow) {
     blockToShow.show("slow", function () {})
@@ -56,6 +65,12 @@ var renderRow = function (item) {
     return Mustache.render(template, item);
 };
 
+var renderLi = function (item) {
+    var template = dropdownLiTemplate.html();
+    Mustache.parse(template);
+    return Mustache.render(template, item);
+};
+
 var renderTable = function () {
     destroyTable();
     var tools = getAllTools();
@@ -65,6 +80,23 @@ var renderTable = function () {
             var newRow = renderRow(tool);
             toolsTable.append($(newRow));
         })});
+};
+
+var destroyDropdownList = function () {
+  dropdownList.empty();
+};
+
+var renderDropdownList = function() {
+    destroyDropdownList();
+
+    var tools = getAllTools();
+
+    tools.list(null, function (results) {
+        results.forEach(function (tool) {
+            var newLi = renderLi(tool);
+            dropdownList.append($(newLi));
+        })});
+
 };
 
 var renderTableWithCustomTools = function (tools) {
@@ -177,4 +209,53 @@ minWeightButton.on("click", function () {
         });
         showBlock(minWeightBlock);
     }
+});
+
+deleteRecordButton.on("click", function () {
+   hideBlock(controlBlock);
+   showBlock(deleteRecordBlock);
+   renderDropdownList();
+});
+
+backFromDeletingButton.on("click", function () {
+   hideBlock(deleteRecordBlock);
+   showBlock(controlBlock);
+});
+
+var makeDeleteMessageSuccess = function (messageText) {
+    selectedRecordInfoStrong.text("Выбранный инструмент: ");
+    selectedRecordInfoText.text(messageText);
+    selectedRecordInfo.addClass("alert-success");
+    selectedRecordInfo.removeClass("alert-danger");
+    showBlock(selectedRecordInfo);
+};
+
+var makeDeleteMessageDanger = function () {
+    selectedRecordInfoStrong.text("Ошибка");
+    selectedRecordInfoText.text("выберите запись для удаления");
+    selectedRecordInfo.removeClass("alert-success");
+    selectedRecordInfo.addClass("alert-danger");
+    showBlock(selectedRecordInfo);
+};
+
+dropdownList.on("click", "a", function (e) {
+    selectedIdToDelete = $(this).text();
+    var newText = "";
+    getToolById(selectedIdToDelete).list(null, function (results) {
+        results.forEach(function (tool) {
+            newText = "Наименование: " + tool.name + " Назначение: " + tool.purpose + " Вес: " + tool.weight + " Цена: " + tool.price;
+            makeDeleteMessageSuccess(newText);
+        });
+    });
+});
+
+deleteSelectedRecordButton.on("click", function () {
+    if (selectedIdToDelete == undefined) {
+        makeDeleteMessageDanger();
+        return;
+    }
+    deleteToolById(selectedIdToDelete);
+    selectedIdToDelete = undefined;
+    makeDeleteMessageSuccess("Был успешно удален!");
+    renderTable();
 });

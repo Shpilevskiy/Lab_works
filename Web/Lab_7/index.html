@@ -70,7 +70,7 @@
             <div id="min-weight-block" class="alert alert-success hide-block">
                 <strong>Инструмент с минимальным весом:</strong>
                 <div id="min-weight-block-text">
-                Добавлен новый инструмент с вашими данными.
+
                 </div>
             </div>
 
@@ -97,6 +97,47 @@
                     <a id="delete-record-button" href="#" type="button" class="btn btn-warning control-button">Удалить запись</a>
                 </div>
             </div>
+
+        </div>
+
+        <div id="delete-record-block" class="col-md-12 hide-block">
+
+            <div id="selected-block" class="alert alert-success hide-block">
+                <strong id="selected-block-strong">Выбранный инструмент:</strong>
+                <div id="selected-block-text"></div>
+            </div>
+
+            <div class="col-md-12">
+
+                <div class="col-md-4">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Выберите запись к удалению
+                            <span class="caret"></span>
+                        </button>
+
+                        <ul id="dropdown-records-id" class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="control-button-wrapper">
+                        <a id="delete-selected-record" href="#" type="button" class="btn btn-danger control-button">Удалить выбранную запись</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="control-button-wrapper">
+                        <a id="back-from-deleting" href="#" type="button" class="btn btn-success control-button">Вернуться назад</a>
+                    </div>
+                </div>
+
+
+            </div>
+
 
         </div>
 
@@ -136,6 +177,11 @@
     </tr>
 </script>
 
+<script id="dropdown-li-template" type="x-tmpl-mustache">
+     <li>
+        <a href="#">{{id}}</a>
+     </li>
+</script>
 
 <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
