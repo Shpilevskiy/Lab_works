@@ -89,17 +89,18 @@
         <div id="table-block" class="col-md-12 hide-block">
             <hr>
             <div class="table-responsive">
-                <table id="results-table" class="table table-striped">
+                <table id="tools-table" class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Возраст</th>
+                        <th>Наименование</th>
+                        <th>Назначение</th>
                         <th>Цена</th>
-                        <th>Состояние</th>
+                        <th>Вес</th>
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="tools-table-body">
 
                     </tbody>
 
@@ -110,12 +111,13 @@
 
 </div>
 
-<script id="result-row-template" type="x-tmpl-mustache">
+<script id="tools-table-template" type="x-tmpl-mustache">
     <tr class="result-row">
         <td>{{ id }}</td>
-        <td>{{ age }}</td>
+        <td>{{ name }}</td>
+        <td>{{ purpose }}</td>
         <td>{{ price }}</td>
-        <td>{{ quality }}</td>
+        <td>{{ weight }}</td>
     </tr>
 </script>
 
@@ -123,7 +125,13 @@
 <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="bower_components/mustache.js/mustache.min.js"></script>
+
+<script src="bower_components/persistence/lib/persistence.js"></script>
+<script src="bower_components/persistence/lib/persistence.store.sql.js"></script>
+<script src="bower_components/persistence/lib/persistence.store.websql.js"></script>
+
 <script type="application/javascript" src="js/index.js"></script>
+<script type="application/javascript" src="js/webDb.js"></script>
 
 </body>
 </html>
