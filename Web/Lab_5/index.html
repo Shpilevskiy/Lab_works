@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="info-header">
+        <h1 class="info-title"> Лабораторная №5 DHTML</h1>
+        <p class="lead info-description"> Пример, показывающий возможности DHTML</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-11">
+            <div class="quiz-post">
+                <hr>
+
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="LabMultiSelect">Множественный выбор</label>
+                            <div class="controls">
+                                <select multiple="multiple" class="customMultiple" name="LabSelect" id="LabMultiSelect">
+                                    <option value="1">Я очень хороший пункт</option>
+                                    <option value="2">Dhtml так прекрасен</option>
+                                    <option value="2">Жаль, что он устарел уже в 2012</option>
+                                    <option value="2">как и jquery, хоть его и нельзя использовать</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <hr>
+
+                    <a href="#" id="submit-button" type="button" onclick="deleteOnButtonClick()" class="btn btn-info">Удалить выбранный элемент</a>
+
+                    <hr>
+
+                    <div id="element-group" class="control-group">
+                        <label for="newElementInput">Введите новый элемент</label>
+                        <input id="newElementInput" class="form-control" type="text" placeholder="Что-нибудь новое">
+                    </div>
+
+                    <a href="#" id="add-button" type="button" onclick="addNewElementButtonClick()" class="btn btn-info new-element-button">Добавить введенный элемент</a>
+
+                    <hr>
+
+                    <a href="result.html" id="result-page-button" type="button" class="btn btn-info new-element-button">Посмотреть все удаленные элементы</a>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="application/javascript" src="js/index.js"></script>
+</body>
+</html>
