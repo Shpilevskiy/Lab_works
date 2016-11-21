@@ -14,15 +14,19 @@ var minWeightButton = $("#minimal-weight-button");
 var showTableButton = $("#show-table-button");
 
 var tableBlock = $("#table-block");
-
+var toolsTable = $("#tools-table");
+var toolsTableTemplate = $("#tools-table-template");
+var toolsTableBody = $("#tools-table-body");
 
 
 var showBlock = function (blockToShow) {
     blockToShow.show("slow", function () {})
 };
 
-var hideBlock = function (blockToHide) {
-    blockToHide.hide("slow", function () {})
+var hideBlock = function (blockToHide, func) {
+    blockToHide.hide("slow", function () {
+        if ( func instanceof Function) func()
+    })
 };
 
 var addErrorClass = function (field) {
@@ -38,6 +42,12 @@ var addSuccessClass = function (field) {
 var removeStateClasses = function (field) {
     field.parent().removeClass("has-error");
     field.parent().removeClass("has-success");
+};
+
+var renderRow = function (item) {
+    var template = toolsTableTemplate.html();
+    Mustache.parse(template);
+    return Mustache.render(template, item);
 };
 
 newRecordButton.on("click", function () {
@@ -96,10 +106,19 @@ backFromAddingButton.on("click", function () {
 
 showTableButton.on("click", function () {
     if(tableBlock.is(':visible')) {
-        hideBlock(tableBlock);
+        hideBlock(tableBlock, $("tr").remove());
         showTableButton.text("Показать таблицу")
     }
    else {
+
+       var tools = getAllTools();
+
+       tools.list(null, function (results) {
+           results.forEach(function (tool) {
+               var newRow = renderRow(tool);
+               toolsTable.append($(newRow));
+           })});
+
        showBlock(tableBlock);
         showTableButton.text("Скрыть таблицу")
     }
