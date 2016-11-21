@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="info-header">
+        <h1 class="info-title"> Лабораторная работа №7</h1>
+        <p class="lead info-description">Пример работы с webSql и js шаблонизатором mustache</p>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div id="add-new-record-block" class="col-md-12 hide-block">
+            <div class="col-md-12 new-record-block">
+                <form>
+                    <div class="col-md-6">
+                        <div class="control-group input-group-lg">
+                            <input id="name-input" class="form-control" type="text" placeholder="Название (Электропила)">
+                        </div>
+                        <hr>
+                        <div class="control-group input-group-lg">
+                            <input id="purpose-input" class="form-control" type="text" placeholder="Назначение (электропила по дереву)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group input-group-lg">
+                            <input id="weight-input" class="form-control"  type="number" step="1" placeholder="Вес (45)">
+                            <span class="input-group-addon">кг</span>
+                        </div>
+                        <hr>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">$</span>
+                            <input id="price-input" class="form-control" type="number" step="1" placeholder="Цена (850)">
+                            <span class="input-group-addon">.00</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="control-button">
+                <a id="add-new-record-button" href="#" type="button" class="btn btn-info">Добавить новую запись в таблицу</a>
+            </div>
+
+            <div class="control-button back-button">
+                <a id="remove-input-button" href="#" type="button" class="btn btn-info">Очистить ввод</a>
+            </div>
+
+            <div class="control-button back-button">
+                <a id="back-from-adding" href="#" type="button" class="btn btn-info">Вернуться назад</a>
+            </div>
+        </div>
+
+        <div id="control-buttons-block" class="col-md-12">
+
+            <div class="col-md-3">
+                <div class="control-button">
+                    <a id="new-record-button" href="#" type="button" class="btn btn-info">Добавить новый инструмент</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="control-button">
+                    <a id="show-table-button" href="#" type="button" class="btn btn-info control-button">Показать таблицу</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="control-button">
+                    <a id="minimal-weight-button" href="#" type="button" class="btn btn-info control-button">инструмент с минимальным весом</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="control-button">
+                    <a id="delete-record-button" href="#" type="button" class="btn btn-info control-button">Удалить запись</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="table-block" class="col-md-12 hide-block">
+            <hr>
+            <div class="table-responsive">
+                <table id="results-table" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Возраст</th>
+                        <th>Цена</th>
+                        <th>Состояние</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script id="result-row-template" type="x-tmpl-mustache">
+    <tr class="result-row">
+        <td>{{ id }}</td>
+        <td>{{ age }}</td>
+        <td>{{ price }}</td>
+        <td>{{ quality }}</td>
+    </tr>
+</script>
+
+
+<script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="bower_components/mustache.js/mustache.min.js"></script>
+<script type="application/javascript" src="js/index.js"></script>
+
+</body>
+</html>

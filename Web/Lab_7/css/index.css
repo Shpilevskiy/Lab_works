@@ -1,0 +1,62 @@
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #333;
+}
+
+label {
+    font-weight: normal !important;
+}
+
+.info-header {
+    padding-bottom: 20px;
+}
+
+.info-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+.lead {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.info-description {
+    font-size: 20px;
+    color: #999999;
+}
+
+.new-record-block {
+    margin-bottom: 25px;
+}
+
+.add-new-element-button {
+    padding: 0 40%;
+}
+
+.control-button {
+    margin: 0 auto;
+    text-align: center
+}
+
+.hide-block {
+    display: none;
+}
+
+.back-button {
+    margin-top: 15px;
+}
