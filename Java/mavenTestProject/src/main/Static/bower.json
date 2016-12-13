@@ -1,0 +1,22 @@
+{
+  "name": "simpleJavaWebApp",
+  "homepage": "https://github.com/Shpilevskiy/Lab_works",
+  "authors": [
+    "Nick <arioxon@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "mustache.js": "mustache#^2.3.0",
+    "persistence": "^0.3.0"
+  }
+}
